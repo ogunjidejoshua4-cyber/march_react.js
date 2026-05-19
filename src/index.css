@@ -1,0 +1,19 @@
+/* .container {
+  width: 50%;
+  margin: auto;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+} */
+
+
+
+.app.Light {
+  background-color: white;
+  color: black;
+}
+
+.app.Dark {
+  background-color: black;
+  color: white;
+}

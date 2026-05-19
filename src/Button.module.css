@@ -1,0 +1,15 @@
+ .container {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.box{
+    width: 500px;
+    height: 50px;
+    background-color: beige;
+    color: rgb(0, 55, 255);
+} 
