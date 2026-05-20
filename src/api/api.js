@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5000";
+const baseURL = "https://march-node-js.onrender.com";
 
 export const publicInstance = axios.create({ baseURL });
 
