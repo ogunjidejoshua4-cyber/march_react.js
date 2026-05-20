@@ -20,6 +20,7 @@ import { Product } from "./pagess/Product"
 import { AddProduct } from "./pagess/AddProduct"
 import { Signup } from "./pagess/signup"
 import themeContext from "./context/themeContext";
+// import VerifyEmail from "./pagess/verify-email";
 
 
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="*" element={<NotFound />} />
+        {/* <Route path="/verify-email" element={<VerifyEmail />} /> */}
 
 
       </Routes> 

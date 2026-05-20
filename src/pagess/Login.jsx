@@ -13,7 +13,7 @@ export const Login = () => {
     const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate()
     const [errorMessage, seterrorMessage] = useState("");
-     const {login}= useContext(authContext)
+    const { login } = useContext(authContext)
 
 
 
@@ -43,24 +43,48 @@ export const Login = () => {
             const response = await publicInstance.post("/api/auth/login", data)
             console.log(response.data);
 
-           if(response || response.data){
+            if (response || response.data) {
                 const user = response?.data?.user
                 const token = response?.data?.token
-               login({user, token})
+                login({ user, token })
 
-               navigate("/")
-              }
+                navigate("/")
+            }
 
 
         } catch (error) {
-            const message = error.response?.data?.message || error.message || "Login failed";
+
+            const message =
+                error.response?.data?.message ||
+                error.message ||
+                "Login failed";
+
             console.log(message);
-            seterrorMessage(message)
+
+            seterrorMessage(message);
+
+            // if account is not verified
+            if (message === "Please verify your account before logging in") {
+
+                setTimeout(() => {
+                    navigate("/verify-email");
+                }, 5000);
+            }
+
         } finally {
+
             setLoading(false);
             setDisabled(false);
-
         }
+        // catch (error) {
+        //     const message = error.response?.data?.message || error.message || "Login failed";
+        //     console.log(message);
+        //     seterrorMessage(message)
+        // } finally {
+        //     setLoading(false);
+        //     setDisabled(false);
+
+        // }
 
 
 
@@ -94,6 +118,8 @@ export const Login = () => {
         borderRadius: '4px',
         cursor: 'pointer',
     };
+
+    // const navigate = useNavigate();
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} style={formStyle}>
@@ -134,6 +160,8 @@ export const Login = () => {
 
                 <button disabled={disabled} type="submit" style={buttonStyle}>
                     {loading ? "loading" : "submit"}
+
+
                 </button>
                 <p>{errorMessage}</p>
             </form>
